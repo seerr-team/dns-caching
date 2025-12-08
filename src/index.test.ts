@@ -77,6 +77,11 @@ describe("DnsCacheManager Lookup Tests", () => {
     expect(["1.2.3.4", "2001:db8::1"]).toContainEqual(result.address);
   });
 
+  test("dns.lookup override works with dns/promises", async () => {
+    const result = await dns.promises.lookup("test-jest.local");
+    expect(["1.2.3.4", "2001:db8::1"]).toContainEqual(result.address);
+  });
+
   test("updateCache merges entries", async () => {
     await manager.updateCache("custom.local", {
       addresses: { ipv4: ["1.1.1.1"], ipv6: [] },
