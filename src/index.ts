@@ -339,6 +339,7 @@ export class DnsCacheManager {
     };
 
     dns.lookup = wrappedLookup;
+    dns.promises.lookup = wrappedLookup.__promisify__;
   }
 
   async lookup(
